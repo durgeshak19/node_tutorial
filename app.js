@@ -1,5 +1,13 @@
-const _ = require('lodash')
-const items = [1,[2,[3,[4]]]]
+const {createReadStream} = require('fs')
 
-const newItems = _.flattenDeep(items)
-console.log(newItems)
+const stream = createReadStream('./content/subfolder/big-file.txt')
+
+//default 64 kB
+//last buffer - reaminder
+
+//highWaterMark - control size
+// const stream = createReadStream(
+
+stream.on('data' , (result) =>{
+    console.log(result)
+})
